@@ -30,8 +30,13 @@
                 <section class="card">
                     <div class="text-content">
                         <h3>{{ juego.id }}: {{ juego.juego }}</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
+                        <br>
+                        <h1 style="color: white;"> Estado: {{ juego.estado }}</h1>
+                        <h1 style="color: white;"> Veces Jugadas: {{ juego.runN }} || Rejugando: {{ juego.rejugando}} || Calificacion: {{ juego.calificacion }}</h1>
+                        <h1 style="color: white;"> Comentario: {{ juego.DatosAdicionales}}</h1>
+                        <h1 style="color: white;"> Fecha Terminado:  {{ juego.fecha_finalizado }}</h1>
+
+                        <br>
 
                         <button type="button" class="btn btn-outline-danger" style="max-width: 150px;" data-bs-toggle="modal" data-bs-target="#exampleModal{{ juego.id }}">Delete</button>                            
                         <div class="modal fade" id="exampleModal{{ juego.id }}" tabindex="-1" aria-labelledby="exampleModalLabel{{ juego.id }}" aria-hidden="true">

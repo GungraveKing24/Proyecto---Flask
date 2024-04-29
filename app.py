@@ -16,7 +16,7 @@ class games(db.Model):
     runN = db.Column(db.Integer, nullable=False)
     rejugando = db.Column(db.String, nullable=False)
     DatosAdicionales = db.Column(db.String, nullable=False)
-    calificacion = db.Column(db.Float(precision=8, asdecimal=True), nullable=False)
+    calificacion = db.Column(db.Float(precision=1, asdecimal=True), nullable=False)
     img = db.Column(db.String, nullable=True)
     fecha_finalizado = db.Column(db.Date, nullable=True)
 
@@ -25,9 +25,10 @@ def index():
 
     # Consulta SQL para obtener todos los juegos
     Juegos = games.query.all()
-    
+    for juego in Juegos:
+        juego.calificacion = round(juego.calificacion, 1) #redondea el valor a 1 decimal
     # Renderizar la plantilla HTML y pasar la lista de imágenes como argumento
-    return render_template('index.html', titulo='Practica Flask', Juegos=Juegos)
+    return render_template('index.html', titulo='Flask', Juegos=Juegos)
 
 @app.route('/search')
 def search():

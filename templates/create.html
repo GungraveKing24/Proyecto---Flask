@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- CSS BOOTSTRAP -->
+    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cards.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='create.css') }}">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    
+</head>
+<body>
+    
+    {% include 'navbar.html' %}
+
+    <section class="home-section">
+        <div style="height: 1px; padding-top: 0px;"></div>
+
+        <form method="POST" style="color: aliceblue;">
+            <div class="logpad" style="color: white;">
+                <div class="logo">
+                    <img src="../static/img/photo_2024-04-26_14-12-48.jpg" height="100" width="100">
+                </div>
+                <div>
+                    <span>Ingrese los datos</span>
+                </div>
+                <div class="row pt-5">
+                    <div class="col-md-6" style="padding-right: 50px;">
+                        <div class="mb-3">
+                            <label for="juego" class="form-label">Nombre del juego</label>
+                            <input type="text" class="form-control" id="juego" name="juego" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="DatosAdicionales" class="form-label">Datos Adicionales</label>
+                            <textarea type="text" class="form-control" id="DatosAdicionales" name="DatosAdicionales" required></textarea>
+                        </div>
+                        
+                    </div>
+    
+                    <div class="col-md-1">
+                        <div class="mb-3">
+                            <label for="runN" class="form-label">Run</label>
+                            <input type="text" class="form-control" id="runN" name="runN" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="calificacion" class="form-label">Calificación</label>
+                            <input type="number" class="form-control" id="calificacion" name="calificacion" min="0" max="10" step="0.1" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div>
+                            <label for="estado" class="form-label">Estado</label>
+                            <select name="estado" id="estado" class="form-select" required>
+                                    <option selected disabled>Elegir</option>
+                                {% for estado in estados %}
+                                    <option value="{{ estado }}">{{ estado }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="rejugando" class="form-label">Estado</label>
+                            <select name="rejugando" id="rejugando" class="form-select" required>
+                                    <option value="No">No</option>
+                                    <option value="Si">Si</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div>
+                                <label for="img" class="form-label">Enlace Imagen</label>
+                                <input type="text" class="form-control" id="img" name="img" required>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div>
+                                <label for="fecha_finalizado" class="form-label">Fecha de finalización</label>
+                                <input type="date" class="form-control" id="fecha_finalizado" name="fecha_finalizado">
+                            </div>
+                        </div>
+                    </div>
+    
+                    <button type="submit" class="btn btn-primary">Crear</button>   
+                </div>
+                    
+            </div>
+        </form>
+    </section>
+
+    <!-- JS BOOTSTRAP -->
+    <script src="static/js/bootstrap.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
